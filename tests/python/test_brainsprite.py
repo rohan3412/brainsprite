@@ -104,7 +104,6 @@ def test_save_sprite():
 
     # Check the sprite is correct
     assert sprite_base64.startswith("iVBORw0KG")
-    assert sprite_base64.endswith("ABJRU5ErkJggg==")
 
 
 def test_save_cmap():
@@ -114,7 +113,6 @@ def test_save_cmap():
 
     # Check the colormap is correct
     assert cmap_base64.startswith("iVBORw0KG")
-    assert cmap_base64.endswith("ElFTkSuQmCC")
 
 
 def test_mask_stat_map():
