@@ -601,28 +601,30 @@ function brainsprite (params) { // eslint-disable-line no-unused-vars
     const yy = e.clientY - rect.top
     let sy, sz
 
+    const newSlice = {}
+
     if (xx < brain.widthCanvas.X) {
       sy = Math.round((brain.nbSlice.Y - 1) * (xx / brain.widthCanvas.X))
       sz = Math.round((brain.nbSlice.Z - 1) * (((brain.heightCanvas.max +
         brain.heightCanvas.X) / 2) - yy) / brain.heightCanvas.X)
-      brain.numSlice.Y = Math.max(Math.min(sy, brain.nbSlice.Y - 1), 0)
-      brain.numSlice.Z = Math.max(Math.min(sz, brain.nbSlice.Z - 1), 0)
+      newSlice.Y = Math.max(Math.min(sy, brain.nbSlice.Y - 1), 0)
+      newSlice.Z = Math.max(Math.min(sz, brain.nbSlice.Z - 1), 0)
     } else if (xx < (brain.widthCanvas.X + brain.widthCanvas.Y)) {
       xx = xx - brain.widthCanvas.X
       let visualX = Math.round((brain.nbSlice.X - 1) * (xx / brain.widthCanvas.Y))
       let sx = toVoxelX(visualX)
       let sz = Math.round((brain.nbSlice.Z - 1) * (((brain.heightCanvas.max +
         brain.heightCanvas.X) / 2) - yy) / brain.heightCanvas.X)
-      brain.numSlice.X = Math.max(Math.min(sx, brain.nbSlice.X - 1), 0)
-      brain.numSlice.Z = Math.max(Math.min(sz, brain.nbSlice.Z - 1), 0)
+      newSlice.X = Math.max(Math.min(sx, brain.nbSlice.X - 1), 0)
+      newSlice.Z = Math.max(Math.min(sz, brain.nbSlice.Z - 1), 0)
     } else {
       xx = xx - brain.widthCanvas.X - brain.widthCanvas.Y
       let visualX = Math.round((brain.nbSlice.X - 1) * (xx / brain.widthCanvas.Z))
       let sx = toVoxelX(visualX)
       let sy = Math.round((brain.nbSlice.Y - 1) * (((brain.heightCanvas.max +
         brain.heightCanvas.Z) / 2) - yy) / brain.heightCanvas.Z)
-      brain.numSlice.X = Math.max(Math.min(sx, brain.nbSlice.X - 1), 0)
-      brain.numSlice.Y = Math.max(Math.min(sy, brain.nbSlice.Y - 1), 0)
+      newSlice.X = Math.max(Math.min(sx, brain.nbSlice.X - 1), 0)
+      newSlice.Y = Math.max(Math.min(sy, brain.nbSlice.Y - 1), 0)
     };
     
     brain.setSlice(newSlice)
