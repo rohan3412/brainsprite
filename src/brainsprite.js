@@ -624,14 +624,9 @@ function brainsprite (params) { // eslint-disable-line no-unused-vars
       brain.numSlice.X = Math.max(Math.min(sx, brain.nbSlice.X - 1), 0)
       brain.numSlice.Y = Math.max(Math.min(sy, brain.nbSlice.Y - 1), 0)
     };
-    // Update value
-    updateValue()
-
-    // Update coordinates
-    updateCoordinates()
-
-    // Redraw slices
-    brain.drawAll()
+    
+    brain.setSlice(newSlice)
+    
     if (brain.onclick) {
       brain.onclick(e)
     };
